@@ -23,6 +23,9 @@ app.get('/register', (req,res) => {
     res.render('register.ejs')
 })
 
+app.get('/ProtectedPage', (req,res) => {
+    res.render('ProtectedPage.ejs')
+})
 
 
 app.post('/register', async (req,res) => {
@@ -56,14 +59,14 @@ app.post('/login', async (req,res) => {
         const user = await login.findOne({email: email})
 
         if(!user){
-            return res.status(400).json({error: 'incorrect email or password'})
+            return res.status(400).json({error: 'incorrect email'})
         }
 
         if (user.password !== password) {
             return res.status(400).json({error: 'incorrect password'})
         }
 
-        res.redirect('/')
+        res.redirect('/ProtectedPage')
     } catch (error) {
         res.status(500).json({error: 'An error occured. Please try again.'})
     }

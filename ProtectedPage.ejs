@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Protected Page</title>
+</head>
+<body>
+    <h1>Protected Page</h1>
+    <p>Bienvenue sur la page protégée ! Seuls les utilisateurs authentifiés peuvent voir cela.</p>
+    <button onclick="logout()">Logout</button>
+
+    <script>
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = '/login'; // Rediriger vers la page de connexion
+        }
+    </script>
+</body>
+</html>
