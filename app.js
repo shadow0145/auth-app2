@@ -1,5 +1,5 @@
 const express = require('express');
-const loginCollection = require('./db.js');
+const login = require('./db');
 const app = express();
 
 app.set('view-engine', 'ejs');
@@ -26,14 +26,14 @@ app.get('/register', (req,res) => {
 
 
 app.post('/register', async (req,res) => {
-    const data = new loginCollection({
+    const data = new login({
         name:req.body.name,
         password:req.body.password,
         email:req.body.email
     })
 
     try {
-        const existingUser = await loginCollection.findOne({email:req.body.email})
+        const existingUser = await login.findOne({email:req.body.email})
 
         if (existingUser){
             return res.status(400).json({error: 'Email already registered'})
@@ -53,7 +53,7 @@ app.post('/login', async (req,res) => {
     try {
         const {email, password} = req.body;
 
-        const user = await loginCollection.findOne({email: email})
+        const user = await login.findOne({email: email})
 
         if(!user){
             return res.status(400).json({error: 'incorrect email or password'})
