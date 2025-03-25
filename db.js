@@ -16,9 +16,12 @@ const loginSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:true
     }
 })
 
-const loginCollection = new mongoose.model('loginCollection',loginSchema)
-
-module.exports = loginCollection
+module.exports = mongoose.model('login',loginSchema)
