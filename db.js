@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 mongoose.connect('mongodb+srv://jar:Kushina4@auth-app.88raa.mongodb.net/?retryWrites=true&w=majority&appName=auth-app')
 .then(()=> {
@@ -23,5 +26,6 @@ const loginSchema = new mongoose.Schema({
         unique:true
     }
 })
+
 
 module.exports = mongoose.model('login',loginSchema)

@@ -58,6 +58,14 @@ input:focus {
 
 button {
     background: linear-gradient(45deg, var(--primary-color));
-    color: white;
+    color: black;
     padding: 1rem;
+    background-color: rgb(26, 77, 100);
+}
+
+a {
+    background: linear-gradient(45deg, var(--primary-color));
+    color: red;
+    padding: 0.5rem;
+    background-color: rgb(26, 77, 100);
 }
